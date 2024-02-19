@@ -2,6 +2,9 @@ create database raw;
 create database analytics;
 create schema raw.jaffle_shop;
 create schema raw.stripe;
+create schema raw.snowplow;
+create schema raw.dbt_prey;
+create schema analytics.dbt_prey;
 
 
 create table raw.jaffle_shop.customers 
@@ -56,7 +59,19 @@ file_format = (
     skip_header = 1
     );
 
+create or replace table analytics.dbt_prey.mock_orders as
+select od.id as order_id,
+       od.user_id,
+       od.order_date,
+       od.status,
+       od._etl_loaded_at as updated_at 
+from raw.jaffle_shop.orders od
+;
+
+
+ANALYTICS.DBT_PREY.MOCK_ORDERS
 
 select * from raw.jaffle_shop.customers;
 select * from raw.jaffle_shop.orders;
-select * from raw.stripe.payment; 
+select * from raw.stripe.payment;
+select * from analytics.dbt_prey.mock_orders;

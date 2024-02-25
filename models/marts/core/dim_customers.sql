@@ -25,5 +25,6 @@ final as (
         customer_orders.lifetime_value
     from customers
     left join customer_orders using (customer_id)
+    -- add condition
 )
 select * from final

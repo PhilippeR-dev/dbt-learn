@@ -68,6 +68,15 @@ select od.id as order_id,
 from raw.jaffle_shop.orders od
 ;
 
+create or replace table analytics.marts.mock_orders as
+select od.id as order_id,
+       od.user_id,
+       od.order_date,
+       od.status,
+       od._etl_loaded_at as updated_at 
+from raw.jaffle_shop.orders od
+;
+
 --RAW.SNOWPLOW.EVENTS
 
 create or replace table raw.snowplow.events (

@@ -1,14 +1,20 @@
 with orders as  (
+
     select * from {{ ref('stg_orders' )}}
+
 ),
 
 payments as (
+
     select * from {{ ref('stg_payments') }}
+
 ),
 
 order_payments as (
+    
     select
         order_id,
+        -- add column
         sum(case when status = 'success' then amount end) as amount
 
     from payments
@@ -25,6 +31,7 @@ final as (
 
     from orders
     left join order_payments using (order_id)
+    -- add conditions, filters
 )
 
 select * from final

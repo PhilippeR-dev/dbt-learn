@@ -3,4 +3,12 @@ packages:
   version: 1.1.1
 - package: dbt-labs/dbt_external_tables
   version: 0.8.7
-sha1_hash: 228742e68f10bf8ec4a14b4b90fef00e3227db50
+- package: dbt-labs/audit_helper
+  version: 0.10.0
+- package: calogica/dbt_expectations
+  version: 0.10.3
+- package: tnightengale/dbt_meta_testing
+  version: 0.3.6
+- package: calogica/dbt_date
+  version: 0.10.0
+sha1_hash: cf19e82104156c20e9a0a1fa336f842aa9f2b2ba

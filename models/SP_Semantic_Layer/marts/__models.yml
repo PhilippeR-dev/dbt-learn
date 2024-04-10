@@ -39,7 +39,7 @@ models:
         description: The foreign key relating to the customer who placed the order.
         tests:
           - relationships:
-              to: ref('stg_customers')
+              to: ref('sl_stg_customers')
               field: customer_id
       - name: location_id
         description: The foreign key relating to the location the order was placed at.
@@ -62,7 +62,7 @@ models:
       - name: order_cost
         description: The sum of supply expenses to fulfill the order.
       - name: location_name
-        description: The full location name of where this order was placed. Denormalized from `stg_locations`.
+        description: The full location name of where this order was placed. Denormalized from `sl_stg_locations`.
       - name: is_first_order
         description: A boolean indicating if this order is from a new customer placing their first order.
       - name: is_food_order

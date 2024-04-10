@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_customers
+  - name: sl_stg_customers
     description: Customer data with basic cleaning and transformation applied, one row per customer.
     columns:
       - name: customer_id
@@ -10,7 +10,7 @@ models:
           - not_null
           - unique
 
-  - name: stg_order_items
+  - name: sl_stg_order_items
     description: Individual food and drink items that make up our orders, one row per item.
     columns:
       - name: order_item_id
@@ -19,7 +19,7 @@ models:
           - not_null
           - unique
 
-  - name: stg_orders
+  - name: sl_stg_orders
     description: Order data with basic cleaning and transformation applied, one row per order.
     columns:
       - name: order_id
@@ -28,7 +28,7 @@ models:
           - not_null
           - unique
 
-  - name: stg_products
+  - name: sl_stg_products
     description: Product (food and drink items that can be ordered) data with basic cleaning and transformation applied, one row per product.
     columns:
       - name: product_id
@@ -37,7 +37,7 @@ models:
           - not_null
           - unique
 
-  - name: stg_supplies
+  - name: sl_stg_supplies
     description: >
       List of our supply expenses data with basic cleaning and transformation applied.
 

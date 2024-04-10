@@ -2,19 +2,19 @@ with
 
 customers as (
 
-    select * from {{ ref('stg_customers') }}
+    select * from {{ ref('sl_stg_customers') }}
 
 ),
 
 orders as (
 
-    select * from {{ ref('fct_orders') }}
+    select * from {{ ref('sl_fct_orders') }}
 
 ),
 
 order_items as (
 
-    select * from {{ ref('order_items') }}
+    select * from {{ ref('sl_order_items') }}
 ),
 
 order_summary as (

@@ -4,7 +4,7 @@ semantic_models:
       agg_time_dimension: ordered_at
     description: |
       Order fact table. This table is at the order grain with one row per order.
-    model: ref('fct_orders')
+    model: ref('sl_fct_orders')
     entities:
       - name: order_id
         type: primary
@@ -24,6 +24,8 @@ semantic_models:
         type: categorical
         expr: order_total
       - name: is_food_order
+        type: categorical
+      - name: is_drink_order
         type: categorical
 
     measures:

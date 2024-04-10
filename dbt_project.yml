@@ -22,7 +22,7 @@ snapshot-paths: ["snapshots"]
 target-path: "target"  # directory which will store compiled SQL files
 clean-targets:         # directories to be removed by `dbt clean`
     - "target"
-    - "dbt_modules"
+    - "dbt_packages"
 
 
 # Configuring models
@@ -44,6 +44,11 @@ models:
     +required_tests: {"unique.*|not_null": 2}
     staging:
       +materialized: view
+      +database: raw
     marts:
       +required_tests: {"relationship.*": 1}
       +materialized: table
+      +database: analytics
+    SP_Semantic_Layer:
+      +materialized: view
+      +database: analytics_sl

@@ -4,7 +4,7 @@ semantic_models:
       agg_time_dimension: ordered_at
     description: |
       Items contatined in each order. The grain of the table is one row per order item.
-    model: ref('order_items')
+    model: ref('sl_order_items')
     entities:
       - name: order_item
         type: primary

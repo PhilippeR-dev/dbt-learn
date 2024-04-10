@@ -1,0 +1,6 @@
+ select * from raw_sl.jaffle_shop.customers;
+ select * from raw_sl.jaffle_shop.orders;
+ select * from raw_sl.jaffle_shop.items;
+ select * from raw_sl.jaffle_shop.products;
+ select * from raw_sl.jaffle_shop.stores;
+ select * from raw_sl.jaffle_shop.supplies;

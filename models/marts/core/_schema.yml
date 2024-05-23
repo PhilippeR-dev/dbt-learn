@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: One record per customer
+    columns:
+      - name: customer_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              field: customer_id
+              to: ref('stg_customers')
+          - dbt_utils.cardinality_equality:
+              field: customer_id
+              to: ref('stg_customers')
+      - name: first_order_date
+        description: NULL when a customer has not yet placed an order.
+
+  - name: fct_orders
+    description: Complete orders model including the amount associated with each order.
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "amount >= 0"
+    columns:
+      - name: order_id
+        description: Primary key for orders
+        tests:
+          - unique
+          - not_null
+      - name: amount
+        tests:
+          # - dbt_expectations.expect_column_values_to_be_between:
+          #     min_value: 5
+          #     row_condition: "order_id is not null"
+          #     strictly: True
+          - dbt_expectations.expect_column_values_to_be_between: 
+              # this will perform what the dbt_utils.expression-is-true test does!
+              min_value: 0
+              row_condition: "order_id is not null" 
+              strictly: false
+          # - average_dollars_spent_greater_than_one:
+          #     group_by_column: order_id
+          - dbt_expectations.expect_column_mean_to_be_between: 
+              # this will perform what our singular and generic tests do!
+              min_value: 1
+              group_by: [customer_id] 
+              row_condition: "order_id is not null" # (Optional)
+              strictly: false
+      - name: customer_id
+        tests:
+          - relationships:
+              field: customer_id
+              to: ref('dim_customers')
+          # - unique >> for tests

@@ -15,7 +15,7 @@ order_payments as (
     select
         order_id,
         -- add column
-        sum(case when status = 'success' then amount end) as amount
+        sum(case when status = 'success2' then amount end) as amount
 
     from payments
     group by 1
